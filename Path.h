@@ -76,3 +76,22 @@ void increaseTicketPrice(Path routes[], int count, double maxLength) {
         }
     }
 }
+
+void deleteRoute(Path routes[], int& count, int routeNumberToDelete) {
+    bool found = false;
+    for (int i = 0; i < count; ++i) {
+        if (routes[i].routeNumber == routeNumberToDelete) {
+           
+            for (int j = i; j < count - 1; ++j) {
+                routes[j] = routes[j + 1];
+            }
+            count--;
+            found = true;
+            cout << "Route with route number " << routeNumberToDelete << " deleted successfully." << endl;
+            break;
+        }
+    }
+    if (!found) {
+        cout << "Route with route number " << routeNumberToDelete << " not found." << endl;
+    }
+}
