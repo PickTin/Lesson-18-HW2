@@ -9,3 +9,37 @@ struct Path {
     double ticketPrice;
     double routeLength;
 };
+
+void addRoute(Path routes[], int& count, int maxRoutes) {
+    if (count < maxRoutes) {
+        cout << "Enter Route Number: ";
+        cin >> routes[count].routeNumber;
+        cout << "Enter Start Point: ";
+        cin.ignore(); 
+        cin.getline(routes[count].startPoint, 100);
+        cout << "Enter End Point: ";
+        cin.getline(routes[count].endPoint, 100);
+        cout << "Enter Ticket Price: ";
+        cin >> routes[count].ticketPrice;
+        cout << "Enter Route Length: ";
+        cin >> routes[count].routeLength;
+
+        count++;
+        cout << "Route added successfully!" << endl;
+    }
+    else {
+        cout << "Maximum routes reached. Cannot add more." << endl;
+    }
+}
+Path findRouteWithMaxLength(Path routes[], int count) {
+    Path maxRoute;
+    if (count > 0) {
+        maxRoute = routes[0];
+        for (int i = 1; i < count; ++i) {
+            if (routes[i].routeLength > maxRoute.routeLength) {
+                maxRoute = routes[i];
+            }
+        }
+    }
+    return maxRoute;
+}
