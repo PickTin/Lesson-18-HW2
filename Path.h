@@ -43,3 +43,14 @@ Path findRouteWithMaxLength(Path routes[], int count) {
     }
     return maxRoute;
 }
+void sortRoutesByNumber(Path routes[], int count) {
+    for (int i = 0; i < count - 1; ++i) {
+        for (int j = i + 1; j < count; ++j) {
+            if (routes[i].routeNumber > routes[j].routeNumber) {
+                Path temp = routes[i];
+                routes[i] = routes[j];
+                routes[j] = temp;
+            }
+        }
+    }
+}
