@@ -54,3 +54,25 @@ void sortRoutesByNumber(Path routes[], int count) {
         }
     }
 }
+void printRoutesByPoint(Path routes[], int count, const char* point) {
+    bool found = false;
+    cout << "Routes starting or ending at " << point << ":" << endl;
+    for (int i = 0; i < count; ++i) {
+        if (strcmp(routes[i].startPoint, point) == 0 || strcmp(routes[i].endPoint, point) == 0) {
+            cout << "Route Number: " << routes[i].routeNumber << ", Start Point: " << routes[i].startPoint
+                << ", End Point: " << routes[i].endPoint << ", Ticket Price: " << routes[i].ticketPrice
+                << ", Route Length: " << routes[i].routeLength << endl;
+            found = true;
+        }
+    }
+    if (!found) {
+        cout << "No routes found starting or ending at " << point << "." << endl;
+    }
+}
+void increaseTicketPrice(Path routes[], int count, double maxLength) {
+    for (int i = 0; i < count; ++i) {
+        if (routes[i].routeLength > maxLength) {
+            routes[i].ticketPrice *= 1.15; 
+        }
+    }
+}
